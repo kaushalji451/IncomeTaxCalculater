@@ -10,6 +10,7 @@ const TaxHistory = () => {
     let result = await responce.json();
     if (result) {
       setdata(result);
+      console.log(result);
     }
   };
   return (
@@ -46,6 +47,24 @@ const TaxHistory = () => {
                 <p className="font-bold">Filling Status</p>
                 <p>{data.fillingStatus}</p>
               </div>
+
+              <div className="py-4">
+              <p className="font-bold text-xl text-center">Tax BreakDown</p>
+              <div className="flex justify-around py-4 font-bold">
+                <p>Slab</p>
+                <p>Tax Amount</p>
+              </div>
+              <p>
+                
+                {/* map to get all taxbreakdown one by one */}
+                {data.taxBreakdown.map((data) => (
+                  <div className="flex gap-5 justify-around">
+                    <p>{data.slab || 0}</p>
+                    <p>₹{data.amount}</p>
+                  </div>
+                ))}
+              </p>
+            </div>
             </div>
           ))}
       </div>
