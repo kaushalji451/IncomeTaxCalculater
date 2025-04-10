@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 
 const TaxCalculation = () => {
+  // to store the tax calculation result from the backend
   const [formdata, setformdata] = useState({
     income: "",
     fillingStatus: "",
     age: "",
   });
+
+  //to store the data fetch from backend
   const [data, sedata] = useState({});
 
+  // handle form input changes
   let handleChange = (e) => {
     setformdata({ ...formdata, [e.target.name]: e.target.value });
   };
 
+  // to post the data to backend and fetch the tax Calculation result
   let handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //to prevent the form default behavior
     try {
       let responce = await fetch("http://localhost:8080/calculate-tax", {
         method: "post",
@@ -23,11 +28,10 @@ const TaxCalculation = () => {
         body: JSON.stringify(formdata),
       });
       let result = await responce.json();
-      console.log(result);
-      sedata(result);
-      e.target.reset();
+      sedata(result); // set the output from backend to data State
+      e.target.reset(); // reset the form fields
     } catch (error) {
-      console.log(error);
+      console.log(error); // log any errors to the console
     }
   };
 
@@ -37,6 +41,7 @@ const TaxCalculation = () => {
         <h1 className="font-bold text-2xl text-center py-4">
           Fill your Details
         </h1>
+        {/* form to submit user input */}
         <form onSubmit={handleSubmit}>
           <div className="flex  flex-col w-full items-center">
             <div className="flex flex-col gap-2  pb-2 w-2/3">
@@ -90,35 +95,39 @@ const TaxCalculation = () => {
           </div>
         </form>
 
-        {data.income> 0 && <div className="bg-red-300 mt-4 px-8">
-          <h1 className="font-bold text-2xl text-center pb-4">
-            Your Tax Details
-          </h1>
-          <div className="flex justify-around">
-            <p className="font-bold text-xl">Income</p>
-            <p>₹{data.income}</p>
-          </div>
-          <div className="flex justify-around">
-            <p className="font-bold text-xl">Total Tax</p>
-            <p>₹{data.taxAmount}</p>
-          </div>
-          <div className="py-4">
-            <p className="font-bold text-xl text-center">Tax BreakDown</p>
-            <div className="flex justify-around py-4 font-bold">
+        {/* // Display the tax calculation result */}
+        {/*// show result section only if income is present in response*/}
+        {data.income > 0 && (
+          <div className="bg-red-300 mt-4 px-8">
+            <h1 className="font-bold text-2xl text-center pb-4">
+              Your Tax Details
+            </h1>
+            <div className="flex justify-around">
+              <p className="font-bold text-xl">Income</p>
+              <p>₹{data.income}</p>
+            </div>
+            <div className="flex justify-around">
+              <p className="font-bold text-xl">Total Tax</p>
+              <p>₹{data.taxAmount}</p>
+            </div>
+            <div className="py-4">
+              <p className="font-bold text-xl text-center">Tax BreakDown</p>
+              <div className="flex justify-around py-4 font-bold">
                 <p>Slab</p>
                 <p>Tax Amount</p>
-            </div>
-            <p>
-            {data.taxBreakdown.map((data) => (
-                <div className="flex gap-5 justify-around">
+              </div>
+              <p>
+                {/* map to get all taxbreakdown one by one */}
+                {data.taxBreakdown.map((data) => (
+                  <div className="flex gap-5 justify-around">
                     <p>{data.slab || 0}</p>
-                    <p>{data.amount}</p>
-                </div>
-
-              ))}
-            </p>
+                    <p>₹{data.amount}</p>
+                  </div>
+                ))}
+              </p>
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     </>
   );

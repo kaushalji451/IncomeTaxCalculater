@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TaxCalculation from "./TaxCalculation";
-import AllCalculation from "./AllCalculation";
+import TaxHistory from "./TaxHistory";
 const App = () => {
-    return (
+  return (
     <>
       <div className=" h-screen flex justify-center items-center">
         <div className=" w-[80%] h-full rounded-xl p-4">
@@ -11,8 +11,8 @@ const App = () => {
           </h1>
 
           <div className="w-full flex gap-4 h-[90%] ">
-           <TaxCalculation></TaxCalculation>
-            <AllCalculation></AllCalculation>
+            <TaxCalculation></TaxCalculation>   {/*Tax Calculation Component   */}
+            <TaxHistory></TaxHistory>           {/* All tax History Component */}
           </div>
         </div>
       </div>

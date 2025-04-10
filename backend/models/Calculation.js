@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { type, required } = require("../Schema");
 const Schema = mongoose.Schema;
 
 const calculationSchema = new Schema(
@@ -16,8 +15,8 @@ const calculationSchema = new Schema(
       type: Number,
       required: true,
     },
-    fillingStatus :{
-      type : String,
+    fillingStatus: {
+      type: String,
       required: true,
     },
     taxBreakdown: [
