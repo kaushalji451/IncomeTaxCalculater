@@ -3,13 +3,16 @@ import React, { useState } from "react";
 const TaxCalculation = () => {
   // to store the tax calculation result from the backend
   const [formdata, setformdata] = useState({
-    income: "",
-    fillingStatus: "",
+    year: "",
+    categery: "",
     age: "",
+    resStatus: "",
+    income: "",
+    deduction: "",
   });
 
   //to store the data fetch from backend
-  const [data, sedata] = useState({});
+  const [data, setdata] = useState(null);
 
   // handle form input changes
   let handleChange = (e) => {
@@ -28,7 +31,9 @@ const TaxCalculation = () => {
         body: JSON.stringify(formdata),
       });
       let result = await responce.json();
-      sedata(result); // set the output from backend to data State
+      console.log(result);
+      setdata(result); // set the output from backend to data State
+
       e.target.reset(); // reset the form fields
     } catch (error) {
       console.log(error); // log any errors to the console
@@ -44,47 +49,129 @@ const TaxCalculation = () => {
         {/* form to submit user input */}
         <form onSubmit={handleSubmit}>
           <div className="flex  flex-col w-full items-center">
-            <div className="flex flex-col gap-2  pb-2 w-2/3">
-              <label htmlFor="income">Income</label>
-              <input
-                type="number"
-                id="income"
-                name="income"
-                className="bg-white rounded-xl py-1 px-2"
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex flex-col gap-2  pb-2 w-2/3">
-              <label htmlFor="filling-status">Filling status</label>
-              <select
-                name="fillingStatus"
-                id="filling-status"
-                className="bg-white rounded-xl py-1 px-2"
-                onChange={handleChange}
-                required
-              >
-                <option>Select your Filling status</option>
-                <option value="individual">Individual</option>
-                <option value="huf">HUF</option>
-                <option value="company">Company </option>
-                <option value="firm">Firm / LLP / Partnership</option>
-                <option value="aop">
-                  Association of Persons &#40;AOP &#41; / Body of Individuals
-                  &#40;BOI &#41;
-                </option>
-              </select>
-            </div>
-            <div className="flex flex-col gap-2  pb-2 w-2/3">
-              <label htmlFor="age">Age</label>
-              <input
-                type="number"
-                id="age"
-                name="age"
-                className="bg-white rounded-xl py-1 px-2"
-                onChange={handleChange}
-                required
-              />
+            <div className="flex flex-col gap-2  pb-2 w-full px-10">
+              
+              <div className="flex gap-2">
+                <div className="border py-3 px-4 rounded-md bg-slate-500 text-white ">Basic Calculator</div>
+                <div className=" border py-3 px-4 rounded-md">Advance Calculator</div>
+              </div>
+
+              <div className="flex w-full gap-3">
+                {/* assisment year */}
+                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                  {" "}
+                  <label htmlFor="year">Assessment Year</label>
+                  <select
+                    name="year"
+                    id="year"
+                    className="bg-white rounded-xl py-3 px-2"
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select your Assisment Year
+                    </option>
+                    <option value="2025-2026">2025-2026</option>
+                    <option value="2025-2026">2024-2025</option>
+                  </select>
+                </div>
+                {/* Taxpayer Categery */}
+                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                  <label htmlFor="categery">Taxpayer Categery</label>
+                  <select
+                    name="categery"
+                    id="categery"
+                    className="bg-white rounded-xl py-3 px-2"
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select your Taxpayer Categery
+                    </option>
+                    <option value="individual">Individual</option>
+                    <option value="huf">HUF</option>
+                    <option value="company">Company </option>
+                    <option value="firm">Firm / LLP / Partnership</option>
+                    <option value="aop">
+                      Association of Persons &#40;AOP &#41; / Body of
+                      Individuals &#40;BOI &#41;
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                {/* Your age  */}
+                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                  {" "}
+                  <label htmlFor="age">Your Age</label>
+                  <select
+                    name="age"
+                    id="age"
+                    className="bg-white rounded-xl py-3 px-2"
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select your Your Age
+                    </option>
+                    <option value="0-60">Below 60 years</option>
+                    <option value="60-70">Between 60-79</option>
+                    <option value="80">80 and above</option>
+                  </select>
+                </div>
+
+                {/* Ressidencial stataus   */}
+                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                  {" "}
+                  <label htmlFor="resStatus">Residental Status</label>
+                  <select
+                    name="resStatus"
+                    id="resStatus"
+                    className="bg-white rounded-xl py-3 px-2"
+                    required
+                    onChange={handleChange}
+                  >
+                    <option value="" disabled selected>
+                      Select your Residental Status
+                    </option>
+                    <option value="res">RES &#40;Resident&#41;</option>
+                    <option value="rnor">
+                      RNOR &#40;Resident But Not Ordinarily Resident&#41;
+                    </option>
+                    <option value="nr">NR &#40;Non Resident&#41;</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="flex flex-col w-1/2 gap-2">
+                  {/* total income  */}
+                  <label htmlFor="income">Total Anual Income</label>
+                  <input
+                    type="number"
+                    className="bg-white rounded-xl py-3 px-2"
+                    id="income"
+                    name="income"
+                    placeholder="0"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="flex flex-col w-1/2 gap-2">
+                  {/* total income  */}
+                  <label htmlFor="deduction">Total Deductions</label>
+                  <input
+                    type="number"
+                    className="bg-white rounded-xl py-3 px-2"
+                    placeholder="0"
+                    id="deduction"
+                    name="deduction"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
             </div>
             <button
               type="submit"
@@ -97,31 +184,39 @@ const TaxCalculation = () => {
 
         {/* // Display the tax calculation result */}
         {/*// show result section only if income is present in response*/}
-        {data.income > 0 && (
-          <div className="bg-red-300 mt-4 px-8">
+        {data!=null && (
+          <div className="bg-red-300 mt-4 px-20">
             <h1 className="font-bold text-2xl text-center pb-4">
               Your Tax Details
             </h1>
-            <div className="flex justify-around">
-              <p className="font-bold text-xl">Income</p>
-              <p>₹{data.income}</p>
+            <div className="flex justify-between">
+              <p className="font-semibold text-xl">Your Anual Income</p>
+              <p>₹{Math.floor(data.anualIncome)}</p>
             </div>
-            <div className="flex justify-around">
-              <p className="font-bold text-xl">Total Tax</p>
-              <p>₹{data.taxAmount}</p>
+            <div className="flex justify-between">
+              <p className="font-semibold text-xl">Total Deduction</p>
+              <p>₹{Math.floor(data.deduction)}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="font-semibold text-xl ">Taxable Income</p>
+              <p>₹{Math.floor(data.taxableIncome)}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="font-semibold text-xl">Total  Tax</p>
+              <p>₹{Math.floor(data.totalTax)}</p>
             </div>
             <div className="py-4">
               <p className="font-bold text-xl text-center">Tax BreakDown</p>
               <div className="flex justify-around py-4 font-bold">
-                <p>Slab</p>
+                <p>Tax Slab</p>
                 <p>Tax Amount</p>
               </div>
               <p>
                 {/* map to get all taxbreakdown one by one */}
-                {data.taxBreakdown.map((data) => (
+                {data!=null && data.taxBreakdown.map((d) => (
                   <div className="flex gap-5 justify-around">
-                    <p>{data.slab || 0}</p>
-                    <p>₹{data.amount}</p>
+                    <p>{d.slab || 0}</p>
+                    <p>₹{Math.floor(d.amount)}</p>
                   </div>
                 ))}
               </p>

@@ -3,22 +3,14 @@ const Schema = mongoose.Schema;
 
 const calculationSchema = new Schema(
   {
-    income: {
-      type: Number,
-      required: true,
-    },
-    taxAmount: {
-      type: Number,
-      required: true,
-    },
-    age: {
-      type: Number,
-      required: true,
-    },
-    fillingStatus: {
-      type: String,
-      required: true,
-    },
+    assismenYear : {type : String,required : true} ,
+    categery : {type : String,required : true} ,
+    age : {type : String,required : true} ,
+    residentalStatus : {type : String,required : true} ,
+    anualIncome : {type : Number,required : true} ,
+    deduction : {type : Number,required : true} ,
+    totalTax : {type : Number,required : true} ,
+    taxableIncome : {type : Number,required : true},
     taxBreakdown: [
       {
         slab: String,

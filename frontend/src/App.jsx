@@ -4,7 +4,7 @@ import TaxHistory from "./TaxHistory";
 const App = () => {
   return (
     <>
-      <div className=" h-screen flex justify-center items-center">
+      <div className=" flex justify-center items-center">
         <div className=" w-[80%] h-full rounded-xl p-4">
           <h1 className="text-center py-6 font-bold text-2xl">
             Income Tax Calculater

@@ -2,9 +2,13 @@ const Joi = require("joi");
 
 // Joi schema to validate tax calculation input
 const TaxSchema = Joi.object({
-  income: Joi.number().required(),
-  fillingStatus: Joi.string().required(),
-  age: Joi.number().required(),
+  year : Joi.string().required(),
+  categery : Joi.string().required(),
+  age : Joi.string().required(),
+  resStatus : Joi.string().required(),
+  income : Joi.number().required(),
+  deduction : Joi.number().required(),
 }).required();
 
 module.exports = TaxSchema;
+

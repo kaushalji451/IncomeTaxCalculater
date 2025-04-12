@@ -30,23 +30,30 @@ const TaxHistory = () => {
         </div>
 
         {/* // Render history if data is available */}
-        {data != null &&
+         {data != null &&
           data.map((data) => (
             <div className="border py-4 mb-2 mx-4 px-4 rounded-xl border-slate-500 bg-slate-200">
               <div className="flex gap-5">
-                <p className="font-bold">Income</p>
-                <p>{data.income}</p>
+                <p className="font-bold">Taxpayer Categery -</p>
+                <p>{data.categery}</p>
+              </div>
+              <div className="flex gap-5">
+                <p className="font-bold">Anual Income -</p>
+                <p>{data.anualIncome}</p>
+              </div>
+              <div className="flex gap-5">
+                <p className="font-bold">Total Deduction -</p>
+                <p>{data.deduction}</p>
+              </div>
+              <div className="flex gap-5">
+                <p className="font-bold">Taxable Income -</p>
+                <p>{data.taxableIncome}</p>
+              </div>
+              <div className="flex gap-5">
+                <p className="font-bold">Total Tax -</p>
+                <p>{data.totalTax}</p>
               </div>
 
-              <div className="flex gap-5">
-                <p className="font-bold">Tax Amount</p>
-                <p>{data.taxAmount}</p>
-              </div>
-
-              <div className="flex gap-5">
-                <p className="font-bold">Filling Status</p>
-                <p>{data.fillingStatus}</p>
-              </div>
 
               <div className="py-4">
               <p className="font-bold text-xl text-center">Tax BreakDown</p>
@@ -55,7 +62,7 @@ const TaxHistory = () => {
                 <p>Tax Amount</p>
               </div>
               <p>
-                
+                 
                 {/* map to get all taxbreakdown one by one */}
                 {data.taxBreakdown.map((data) => (
                   <div className="flex gap-5 justify-around">

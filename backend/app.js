@@ -21,20 +21,28 @@ main();
 
 // Validate the request using the ValidateTax middleware
 app.post("/calculate-tax", ValidateTax, async (req, res) => {
-  let { income, fillingStatus, age } = req.body;
-
-  // Calculate income tax using the calculateTax function
-  let data = calculateTax(income);
-
-  // Store the calculated tax data in the database
-  let result = await Calculation.insertOne({
-    income: income,
-    taxAmount: data.totalTax,
-    age: age,
-    fillingStatus: fillingStatus,
-    taxBreakdown: data.TaxBreakdown,
-  });
+  
+  // // Calculate income tax using the calculateTax function
+  let body = req.body;
+  let data = calculateTax(body);
+  // // Store the calculated tax data in the database
+  try {
+    let result = await Calculation.insertOne({
+     assismenYear : body.year,
+     categery : body.categery,
+     age : body.age,
+     residentalStatus : body.resStatus,
+     anualIncome : body.income,
+     deduction : body.deduction,
+     totalTax : data.totalTax,
+     taxableIncome : data.taxableincome,
+     taxBreakdown : data.taxBreakdown, 
+    });
+    
   res.json(result);
+  } catch (error) {
+    console.log(error); 
+  }
 });
 
 // Fetch historical tax data from the database
