@@ -30,20 +30,20 @@ Request body -
 Response -
   [
     {
-   _id: ObjectId('67fcd8a0f9c565fddf598e32'),
-    assismenYear: '2025-2026',
-    categery: 'individual',
-    age: '0-60',
-    residentalStatus: 'res',
-    anualIncome: 1000000,
-    deduction: 0,
-    totalTax: 0,
-    taxableIncome: 1000000,
-    cess: 0,
-    tax: 50000,
-    regime: 'newRegime',
-    surcharge: 0,
-    taxBreakdown: [
+   "_id": ObjectId('67fcd8a0f9c565fddf598e32'),
+    "assismenYear": '2025-2026',
+    "categery": 'individual',
+    "age": '0-60',
+    "residentalStatus": 'res',
+    "anualIncome": 1000000,
+    "deduction": 0,
+    "totalTax": 0,
+    "taxableIncome": 1000000,
+    "cess": 0,
+    "tax": 50000,
+    "regime": 'newRegime',
+    "surcharge": 0,
+    "taxBreakdown": [
       {
         slab: '₹0 - ₹300000',
         rate: 0,
