@@ -28,7 +28,6 @@ Request body -
     }
 
 Response -
-  [
     {
    "_id": ObjectId('67fcd8a0f9c565fddf598e32'),
     "assismenYear": '2025-2026',
@@ -67,7 +66,6 @@ Response -
     updatedAt: ISODate('2025-04-14T09:42:56.702Z'),
     __v: 0
     }
-  ]
 
     Get - /calculation
     Description - getting the all Historical data from the backend and return in the from of json data.
