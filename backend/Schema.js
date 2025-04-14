@@ -8,6 +8,7 @@ const TaxSchema = Joi.object({
   resStatus : Joi.string().required(),
   income : Joi.number().required(),
   deduction : Joi.number().required(),
+  regime : Joi.string().required(),
 }).required();
 
 module.exports = TaxSchema;

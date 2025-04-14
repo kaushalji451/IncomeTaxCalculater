@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import TaxDetails from "./TaxDetails";
 const TaxCalculation = () => {
   // to store the tax calculation result from the backend
   const [formdata, setformdata] = useState({
@@ -9,6 +9,7 @@ const TaxCalculation = () => {
     resStatus: "",
     income: "",
     deduction: "",
+    regime: "",
   });
 
   //to store the data fetch from backend
@@ -42,7 +43,7 @@ const TaxCalculation = () => {
 
   return (
     <>
-      <div className="w-1/2 border bg-slate-200 border-slate-300 rounded-xl ">
+      <div className=" border bg-slate-200 border-slate-300 rounded-xl mb-20">
         <h1 className="font-bold text-2xl text-center py-4">
           Fill your Details
         </h1>
@@ -50,13 +51,25 @@ const TaxCalculation = () => {
         <form onSubmit={handleSubmit}>
           <div className="flex  flex-col w-full items-center">
             <div className="flex flex-col gap-2  pb-2 w-full px-10">
-              
-              <div className="flex gap-2">
-                <div className="border py-3 px-4 rounded-md bg-slate-500 text-white ">Basic Calculator</div>
-                <div className=" border py-3 px-4 rounded-md">Advance Calculator</div>
+              {/* regime type */}
+              <div className="flex flex-col gap-2  pb-2 ">
+                <label htmlFor="regime">Regime</label>
+                <select
+                  name="regime"
+                  id="regime"
+                  className="bg-white rounded-xl py-3 px-2"
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled selected>
+                    Select your Regime
+                  </option>
+                  <option value="oldRegime">Old Regime</option>
+                  <option value="newRegime">New Regime</option>
+                </select>
               </div>
 
-              <div className="flex w-full gap-3">
+              <div className="flex w-full gap-5">
                 {/* assisment year */}
                 <div className="flex flex-col gap-2  pb-2 w-1/2">
                   {" "}
@@ -90,8 +103,6 @@ const TaxCalculation = () => {
                     </option>
                     <option value="individual">Individual</option>
                     <option value="huf">HUF</option>
-                    <option value="company">Company </option>
-                    <option value="firm">Firm / LLP / Partnership</option>
                     <option value="aop">
                       Association of Persons &#40;AOP &#41; / Body of
                       Individuals &#40;BOI &#41;
@@ -100,7 +111,7 @@ const TaxCalculation = () => {
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-5">
                 {/* Your age  */}
                 <div className="flex flex-col gap-2  pb-2 w-1/2">
                   {" "}
@@ -116,7 +127,7 @@ const TaxCalculation = () => {
                       Select your Your Age
                     </option>
                     <option value="0-60">Below 60 years</option>
-                    <option value="60-70">Between 60-79</option>
+                    <option value="60-79">Between 60-79</option>
                     <option value="80">80 and above</option>
                   </select>
                 </div>
@@ -144,7 +155,7 @@ const TaxCalculation = () => {
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-5">
                 <div className="flex flex-col w-1/2 gap-2">
                   {/* total income  */}
                   <label htmlFor="income">Total Anual Income</label>
@@ -184,44 +195,8 @@ const TaxCalculation = () => {
 
         {/* // Display the tax calculation result */}
         {/*// show result section only if income is present in response*/}
-        {data!=null && (
-          <div className="bg-red-300 mt-4 px-20">
-            <h1 className="font-bold text-2xl text-center pb-4">
-              Your Tax Details
-            </h1>
-            <div className="flex justify-between">
-              <p className="font-semibold text-xl">Your Anual Income</p>
-              <p>₹{Math.floor(data.anualIncome)}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="font-semibold text-xl">Total Deduction</p>
-              <p>₹{Math.floor(data.deduction)}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="font-semibold text-xl ">Taxable Income</p>
-              <p>₹{Math.floor(data.taxableIncome)}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="font-semibold text-xl">Total  Tax</p>
-              <p>₹{Math.floor(data.totalTax)}</p>
-            </div>
-            <div className="py-4">
-              <p className="font-bold text-xl text-center">Tax BreakDown</p>
-              <div className="flex justify-around py-4 font-bold">
-                <p>Tax Slab</p>
-                <p>Tax Amount</p>
-              </div>
-              <p>
-                {/* map to get all taxbreakdown one by one */}
-                {data!=null && data.taxBreakdown.map((d) => (
-                  <div className="flex gap-5 justify-around">
-                    <p>{d.slab || 0}</p>
-                    <p>₹{Math.floor(d.amount)}</p>
-                  </div>
-                ))}
-              </p>
-            </div>
-          </div>
+        {data != null && (
+    <TaxDetails data={data}></TaxDetails>
         )}
       </div>
     </>

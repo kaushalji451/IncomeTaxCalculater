@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TaxCalculation from "./TaxCalculation";
 import TaxHistory from "./TaxHistory";
+import TaxDetails from "./TaxDetails";
 const App = () => {
   return (
     <>
@@ -10,9 +11,9 @@ const App = () => {
             Income Tax Calculater
           </h1>
 
-          <div className="w-full flex gap-4 h-[90%] ">
+          <div className=" ">
             <TaxCalculation></TaxCalculation>   {/*Tax Calculation Component   */}
-            <TaxHistory></TaxHistory>           {/* All tax History Component */}
+            {/* <TaxHistory></TaxHistory>           All tax History Component */}
           </div>
         </div>
       </div>
