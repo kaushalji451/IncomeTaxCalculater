@@ -7,7 +7,6 @@ const TaxSchema = Joi.object({
   age : Joi.string().required(),
   resStatus : Joi.string().required(),
   income : Joi.number().required(),
-  deduction : Joi.number().required(),
   regime : Joi.string().required(),
 }).required();
 

@@ -8,7 +8,6 @@ const TaxCalculation = () => {
     age: "",
     resStatus: "",
     income: "",
-    deduction: "",
     regime: "",
   });
 
@@ -165,19 +164,6 @@ const TaxCalculation = () => {
                     id="income"
                     name="income"
                     placeholder="0"
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="flex flex-col w-1/2 gap-2">
-                  {/* total income  */}
-                  <label htmlFor="deduction">Total Deductions</label>
-                  <input
-                    type="number"
-                    className="bg-white rounded-xl py-3 px-2"
-                    placeholder="0"
-                    id="deduction"
-                    name="deduction"
                     onChange={handleChange}
                     required
                   />

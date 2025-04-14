@@ -14,7 +14,7 @@ router.post("/", ValidateTax, async (req, res) => {
       age: body.age,
       residentalStatus: body.resStatus,
       anualIncome: body.income,
-      deduction: body.deduction,
+      deduction: data.deduction,
       totalTax: data.totalTax,
       taxableIncome: data.taxableincome,
       cess: data.cess,
@@ -24,6 +24,7 @@ router.post("/", ValidateTax, async (req, res) => {
       taxBreakdown: data.taxBreakdown,
     });
       let result = await Tax.save();
+      console.log(result);
       res.status(200).json(result);
   } catch (error) {
         res.status(500).json({message : "some error occured"});

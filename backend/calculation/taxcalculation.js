@@ -7,11 +7,16 @@ const {
 } = require("./taxSlab");
 
 module.exports = function calculateTax(taxData) {
-  let { income, deduction = 0, regime, age } = taxData;
-  let taxableincome = income - deduction;
+  let { income, regime, age } = taxData;
+  let taxableincome = income;
+  let deduction = 0;
   let tax = 0;
   let totalTax = 0;
   let taxBreakdown = [];
+
+  regime === "newRegime" ? deduction = 75000 : deduction = 50000;
+  console.log(regime);
+  taxableincome = income - deduction;
 
   let slabs;
 
@@ -51,7 +56,7 @@ module.exports = function calculateTax(taxData) {
   }
 
   // added all tax in totaltax first
-    totalTax+=tax;
+  totalTax += tax;
 
   // // Apply surcharge based on income slabs
   let surchargeRate = 0;
@@ -69,12 +74,27 @@ module.exports = function calculateTax(taxData) {
   let cess = 0.04 * totalTax;
   totalTax += cess;
 
+
+  if(regime === "newRegime" && taxableincome <=700000){
+    totalTax = 0;
+    tax = 0;
+    cess = 0;
+    taxBreakdown = {}
+  }
+   if(regime === "oldRegime" && taxableincome <=500000){
+    totalTax = 0;
+    tax = 0;
+    cess = 0;
+    taxBreakdown = {}
+  }
+
   return {
     taxableincome,
     tax: Math.round(tax),
     surcharge: Math.round(surchargeAmount),
     surchargeRate,
     cess: Math.round(cess),
+    deduction,
     totalTax: Math.round(totalTax),
     taxBreakdown,
   };
