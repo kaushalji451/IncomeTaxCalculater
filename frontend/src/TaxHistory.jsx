@@ -26,6 +26,7 @@ const TaxHistory = () => {
         </h1>
 
         {/* // Render history if data is available */}
+        {data == null && <p>Loading...</p>}
         {data != null &&
           data.map((data) => (
             <div>

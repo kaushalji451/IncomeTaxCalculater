@@ -180,6 +180,7 @@ const TaxCalculation = () => {
 
         {/* // Display the tax calculation result */}
         {/*// show result section only if income is present in response*/}
+        {data == null && <p>Loading...</p>}
         {data != null && (
     <TaxDetails data={data}></TaxDetails>
         )}
