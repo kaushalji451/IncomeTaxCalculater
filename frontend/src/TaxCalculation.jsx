@@ -48,7 +48,7 @@ const TaxCalculation = () => {
         {/* form to submit user input */}
         <form onSubmit={handleSubmit}>
           <div className="flex  flex-col w-full items-center">
-            <div className="flex flex-col gap-2  pb-2 w-full px-10">
+            <div className="flex flex-col gap-2  pb-2 w-full min-md:px-10 px-2">
               {/* regime type */}
               <div className="flex flex-col gap-2  pb-2 ">
                 <label htmlFor="regime">Regime</label>
@@ -67,9 +67,9 @@ const TaxCalculation = () => {
                 </select>
               </div>
 
-              <div className="flex w-full gap-5">
+              <div className="min-md:flex w-full gap-5">
                 {/* assisment year */}
-                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                <div className="flex flex-col gap-2  pb-2 min-md:w-1/2">
                   {" "}
                   <label htmlFor="year">Assessment Year</label>
                   <select
@@ -87,7 +87,7 @@ const TaxCalculation = () => {
                   </select>
                 </div>
                 {/* Taxpayer Categery */}
-                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                <div className="flex flex-col gap-2  pb-2 min-md:w-1/2">
                   <label htmlFor="categery">Taxpayer Categery</label>
                   <select
                     name="categery"
@@ -109,9 +109,9 @@ const TaxCalculation = () => {
                 </div>
               </div>
 
-              <div className="flex gap-5">
+              <div className="min-md:flex gap-5">
                 {/* Your age  */}
-                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                <div className="flex flex-col gap-2  pb-2 min-md:w-1/2">
                   {" "}
                   <label htmlFor="age">Your Age</label>
                   <select
@@ -131,7 +131,7 @@ const TaxCalculation = () => {
                 </div>
 
                 {/* Ressidencial stataus   */}
-                <div className="flex flex-col gap-2  pb-2 w-1/2">
+                <div className="flex flex-col gap-2  pb-2 min-md:w-1/2">
                   {" "}
                   <label htmlFor="resStatus">Residental Status</label>
                   <select
@@ -153,8 +153,8 @@ const TaxCalculation = () => {
                 </div>
               </div>
 
-              <div className="flex gap-5">
-                <div className="flex flex-col w-1/2 gap-2">
+              <div className="flex gap-5 w-full">
+                <div className="flex flex-col min-md:w-1/2 w-full gap-2">
                   {/* total income  */}
                   <label htmlFor="income">Total Anual Income</label>
                   <input
@@ -180,7 +180,6 @@ const TaxCalculation = () => {
 
         {/* // Display the tax calculation result */}
         {/*// show result section only if income is present in response*/}
-        {data == null && <p>Loading...</p>}
         {data != null && (
     <TaxDetails data={data}></TaxDetails>
         )}

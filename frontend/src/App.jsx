@@ -5,9 +5,9 @@ import { Routes, Route, Link } from "react-router-dom";
 const App = () => {
   return (
     <>
-      <div className=" flex justify-center items-center">
-        <div className=" w-[80%] h-full rounded-xl p-4">
-          <h1 className="text-center py-6 font-bold text-2xl">
+      <div className=" flex justify-center w-full items-center">
+        <div className=" min-md:w-[80%] w-[95%] h-full rounded-xl p-4">
+          <h1 className="text-center pb-6 font-bold text-2xl">
             Income Tax Calculater
           </h1>
           <div className="flex gap-5 pb-2">

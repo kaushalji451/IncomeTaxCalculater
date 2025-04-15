@@ -2,10 +2,10 @@ import React from 'react'
 
 const TaxDetails = ({data}) => {
   return (
-    <div className="border-t mt-20  mt-4 px-20">
+    <div className="border-t mt-20  mt-4 min-md:px-20 px-2">
     <div className='flex items-center'>
-      <h1 className='w-1/3'>Date - {data.updatedAt.slice(0,10)}</h1>
-    <h1 className="font-bold text-3xl text-center pb-4 py-6">
+      <h1 className='w-1/3'>{data.updatedAt.slice(0,10)}</h1>
+    <h1 className="font-bold min-md:text-3xl text-2xl text-center pb-4 py-6">
       Your Tax Details
     </h1>
     </div>
