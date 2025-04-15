@@ -31,7 +31,6 @@ const TaxCalculation = () => {
         body: JSON.stringify(formdata),
       });
       let result = await responce.json();
-      console.log(result);
       setdata(result); // set the output from backend to data State
 
       e.target.reset(); // reset the form fields

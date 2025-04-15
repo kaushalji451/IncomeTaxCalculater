@@ -3,9 +3,12 @@ import React from 'react'
 const TaxDetails = ({data}) => {
   return (
     <div className="border-t mt-20  mt-4 px-20">
+    <div className='flex items-center'>
+      <h1 className='w-1/3'>Date - {data.updatedAt.slice(0,10)}</h1>
     <h1 className="font-bold text-3xl text-center pb-4 py-6">
       Your Tax Details
     </h1>
+    </div>
     <div className="flex justify-between border-t border-slate-500 py-2">
       <p className="px-4 text-slate-700 text-xl">Regime Type</p>
       {data.regime === "oldRegime" ? (
