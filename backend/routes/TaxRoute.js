@@ -4,6 +4,9 @@ const { ValidateTax } = require("../middleware");
 const calculateTax = require("../calculation/taxcalculation");
 const Calculation = require("../models/Calculation");
 
+// Route to fetch result from body 
+// And save in database after calculate Tax
+// And return the calculations to frontend
 router.post("/", ValidateTax, async (req, res) => {
   let body = req.body;
   let data = calculateTax(body);
@@ -24,13 +27,14 @@ router.post("/", ValidateTax, async (req, res) => {
       taxBreakdown: data.taxBreakdown,
     });
       let result = await Tax.save();
-      console.log(result);
       res.status(200).json(result);
   } catch (error) {
         res.status(500).json({message : "some error occured"});
   }
 });
 
+// Fetch the all tax calcualtion history from database 
+// And sent to frontend
 router.get("/", async (req, res) => {
   try {
     let data = await Calculation.find({});

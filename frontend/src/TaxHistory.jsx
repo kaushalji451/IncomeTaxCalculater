@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import TaxDetails from "./TaxDetails";
+
 const TaxHistory = () => {
   // A state variable to store the Tax Calculation History
   const [data, setdata] = useState(null);
@@ -8,7 +9,7 @@ const TaxHistory = () => {
   // Fetch history data from backend
   useEffect(() => {
     let handleData = async () => {
-      let responce = await fetch("http://localhost:8080/calculations");
+      let responce = await fetch(`${import.meta.env.VITE_API_BASE_URL}/calculations`);
       let result = await responce.json();
       if (result) {
         setdata(result);
