@@ -89,12 +89,20 @@ module.exports = function calculateTax(taxData) {
 
   //  if new Regime and taxable income <= 1200000 
   // then you dont need to pay tax 
-  if(regime === "newRegime" && taxableincome <=1200000){
-    totalTax = 0;
-    tax = 0;
-    cess = 0;
-    taxBreakdown = {}
+  if(regime === "newRegime") {
+    if(taxData.year === "2025-2026" && taxableincome <= 1200000){
+      totalTax = 0;
+      tax = 0;
+      cess = 0;
+      taxBreakdown = {};
+    } else if(taxData.year === "2024-2025" && taxableincome <= 700000){
+      totalTax = 0;
+      tax = 0;
+      cess = 0;
+      taxBreakdown = {};
+    }
   }
+  
   
   //  if old Regime and taxable income <= 500000 
   // then you dont need to pay tax 
