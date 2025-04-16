@@ -87,9 +87,9 @@ module.exports = function calculateTax(taxData) {
   let cess = 0.04 * totalTax;
   totalTax += cess;
 
-  //  if new Regime and taxable income <= 700000 
+  //  if new Regime and taxable income <= 1200000 
   // then you dont need to pay tax 
-  if(regime === "newRegime" && taxableincome <=700000){
+  if(regime === "newRegime" && taxableincome <=1200000){
     totalTax = 0;
     tax = 0;
     cess = 0;
