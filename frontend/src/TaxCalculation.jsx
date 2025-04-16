@@ -83,7 +83,7 @@ const TaxCalculation = () => {
                       Select your Assisment Year
                     </option>
                     <option value="2025-2026">2025-2026</option>
-                    <option value="2025-2026">2024-2025</option>
+                    <option value="2024-2025">2024-2025</option>
                   </select>
                 </div>
                 {/* Taxpayer Categery */}
