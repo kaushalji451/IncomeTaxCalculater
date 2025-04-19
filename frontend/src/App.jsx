@@ -5,16 +5,16 @@ import { Routes, Route, Link } from "react-router-dom";
 const App = () => {
   return (
     <>
-      <div className=" flex justify-center w-full items-center">
-        <div className=" min-md:w-[80%] w-[95%] h-full rounded-xl p-4">
-          <h1 className="text-center pb-6 font-bold text-2xl">
+      <div className=" flex justify-center w-full items-center overflow-auto scrollbar-hide  text-[#f8b3ac] bg-[#262140]">
+        <div className=" min-md:w-[95%] w-full h-full rounded-xl p-4 pt-15">
+          <h1 className="text-center pb-6 font-bold text-4xl">
             Income Tax Calculater
           </h1>
-          <div className="flex gap-5 pb-2">
+          <div className="flex gap-5 min-md:ps-10 pb-4">
             <Link to="/">
               <button
                 type="button"
-                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                class="bg-[#362f5d] text-[#f8b3ac] font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2"
               >
                 Calculator
               </button>
@@ -23,7 +23,7 @@ const App = () => {
             <Link to="/history">
               <button
                 type="button"
-                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                class="bg-[#362f5d] text-[#f8b3ac] font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2"
               >
                 History
               </button>

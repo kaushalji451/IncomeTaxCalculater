@@ -20,8 +20,8 @@ const TaxHistory = () => {
 
   return (
     <>
-      <div className="h-[80vh] border bg-slate-200 border-slate-300 rounded-xl pt-6 overflow-y-scroll">
-        <h1 className="font-bold text-2xl text-center">
+      <div className="h-[80vh]  bg-[#262140] border-t mt-5 pt-6">
+        <h1 className="font-bold text-3xl text-center">
           Your History of Calculating Income Tax
         </h1>
 
